@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 1vw;
+}
+
+nav {
+    background-color: #2E3738;
+    height: 10vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.nav-title {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.2s ease-in-out;
+}
+
+.nav-title:hover {
+    letter-spacing: 3px;
+    cursor: default;
+}
+
+.weather-data-container {
+    color: white;
+    width: 25vw;
+    height: 40vh;
+    background-color: #2E3738;
+    border-radius: 5px;
+    padding: 1vh 1vw;
+
+    display: grid;
+    grid-template-areas: "desc"
+    "location"
+    "weather";
+    grid-template-rows: 1fr 1fr 3fr;
+}
+
+.desc-div, .location-div {
+    display: flex;
+}
+
+.desc-div {
+    grid-area: desc;
+}
+
+.location-div {
+    grid-area: location;
+}
+
+.weather-div {
+    grid-area: weather;
+}
+
+.desc {
+    text-transform: capitalize;
+}
+
+.search-form {
+    display: flex;
+    gap: 0;
+    width: 25vw;
+}
+
+.city-input {
+    width: 82%;
+    border-radius: 5px 0px 0px 5px;
+    border: 1px solid black;
+    padding: 1vh 1vw;
+    outline: none;
+}
+
+.submit-button {
+    width: 18%;
+    background: #F0A868;
+    padding: 1vh 1vw;
+    border: 1px solid #2E3738;
+    border-left: none;
+    border-radius: 0px 5px 5px 0px;
+    text-align: center;
+    user-select: none;
+}
+
+.submit-button:hover {
+    cursor: pointer;
+}
+
+.units-toggle {
+    display: none;
+}
+
+.units-toggle-text {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    width: 200px;
+    border: 1px solid #2E3738;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    user-select: none;
+}
+
+.units-toggle-text:hover {
+    cursor: pointer;
+}
+
+.units-toggle-text:after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    left: 0;
+    background-color: #2E3738;
+    transition: 0.3s ease-in-out;
+    border: 1px solid #2E3738;
+    border-radius: 5px;
+}
+
+.units-toggle:checked + .units-toggle-text:after {
+    left: 50%;
+}
+
+.toggle-text {
+    width: 100px;
+}
