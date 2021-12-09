@@ -7,22 +7,22 @@
 
 body {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 5vh;
+    gap: 50px;
     align-items: center;
-    justify-content: center;
-    font-size: 1vw;
+    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 nav {
     background-color: #2E3738;
     height: 10vh;
+    min-height: 50px;
     width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,6 +34,7 @@ nav {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: 0.2s ease-in-out;
+    font-size: 25px;
 }
 
 .nav-title:hover {
@@ -43,11 +44,14 @@ nav {
 
 .weather-data-container {
     color: white;
-    width: 25vw;
-    height: 40vh;
+    width: 90vw;
+    height: 60vh;
+    max-width: 600px;
+    max-height: 420px;
     background-color: #2E3738;
     border-radius: 5px;
-    padding: 1vh 1vw;
+    padding: 20px;
+    margin: 0px 100px;
 
     display: grid;
     grid-template-areas: "desc"
@@ -62,14 +66,66 @@ nav {
 
 .desc-div {
     grid-area: desc;
+    display: flex;
+    font-size: 25px;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .location-div {
     grid-area: location;
+    display: flex;
+    font-size: 40px;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
 }
 
 .weather-div {
     grid-area: weather;
+    display: grid;
+    grid-template-areas: ". . ." 
+    "temp line feels"
+    "temp line wind"
+    "temp line hum"
+    ". . .";
+    grid-template-columns: 5fr 1fr 5fr;
+    grid-template-rows: 1fr 2fr 2fr 2fr 1fr;
+    align-items: center;
+    padding: 20px;
+}
+
+.temp {
+    grid-area: temp;
+    font-size: 50px;
+    text-align: center;
+}
+
+.temp sup {
+    font-size: 25px;
+}
+
+.line {
+    grid-area: line;
+    width: 1px;
+    height: 100px;
+    background-color: white;
+}
+
+.feels-like, .wind-speed, .humidity {
+    font-size: 18px;
+}
+
+.feels-like {
+    grid-area: feels;
+}
+
+.wind-speed {
+    grid-area: wind;
+}
+
+.humidity {
+    grid-area: hum;
 }
 
 .desc {
@@ -79,30 +135,42 @@ nav {
 .search-form {
     display: flex;
     gap: 0;
-    width: 25vw;
+    max-width: 400px;
+    width: 90vw;
 }
 
 .city-input {
-    width: 82%;
+    width: 80%;
     border-radius: 5px 0px 0px 5px;
     border: 1px solid black;
-    padding: 1vh 1vw;
+    padding: 10px;
     outline: none;
+    font-size: 15px;
+
 }
 
 .submit-button {
-    width: 18%;
+    width: 20%;
     background: #F0A868;
-    padding: 1vh 1vw;
+    padding: 10px;
     border: 1px solid #2E3738;
     border-left: none;
     border-radius: 0px 5px 5px 0px;
     text-align: center;
     user-select: none;
+    text-align: center;
+    font-size: 15px;
+
 }
 
 .submit-button:hover {
     cursor: pointer;
+}
+
+.units-toggle-div {
+    width: 90vw;
+    max-width: 200px;
+    margin-bottom: 50px;
 }
 
 .units-toggle {
@@ -113,7 +181,7 @@ nav {
     position: relative;
     display: flex;
     gap: 20px;
-    width: 200px;
+    width: 100%;
     border: 1px solid #2E3738;
     display: flex;
     align-items: center;
@@ -122,6 +190,7 @@ nav {
     padding: 10px;
     border-radius: 5px;
     user-select: none;
+    font-size: 15px;
 }
 
 .units-toggle-text:hover {
@@ -131,7 +200,8 @@ nav {
 .units-toggle-text:after {
     content: "";
     position: absolute;
-    width: 100px;
+    width: 50%;
+    max-width: 100px;
     height: 100%;
     left: 0;
     background-color: #2E3738;
@@ -147,3 +217,67 @@ nav {
 .toggle-text {
     width: 100px;
 }
+
+@media screen and (max-width: 1000px), screen and (max-height: 500px) {
+    .nav-title {
+        font-size: 15px;
+    }
+    .desc-div {
+        font-size: 15px;
+    }
+    .location-div {
+        font-size: 30px;
+        overflow-wrap: anywhere;
+    }
+    .temp {
+        font-size: 40px;
+    }
+    .feels-like, .wind-speed, .humidity {
+        font-size: 13px;
+    }
+    .weather-div {
+        padding: 0;
+        padding-bottom: 20px;
+    }
+    .weather-data-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .submit-button, .city-input {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 350px), screen and (max-height: 350px) {
+    .nav-title {
+        font-size: 10px;
+    }
+    .desc-div {
+        font-size: 10px;
+    }
+    .location-div {
+        font-size: 20px;
+    }
+    .temp {
+        font-size: 30px;
+    }
+    .feels-like, .wind-speed, .humidity {
+        font-size: 10px;
+    }
+    .weather-div {
+        padding: 0;
+        padding-bottom: 15px;
+    }
+    .weather-data-container {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .units-toggle-text {
+        font-size: 10px;
+    }
+    .submit-button, .city-input {
+        font-size: 10px;
+        padding: 5px;
+    }
+}
+
