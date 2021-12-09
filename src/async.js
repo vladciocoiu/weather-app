@@ -2,7 +2,7 @@
 // it also handles possible errors
 const fetchDataFromAPI = async (city, metricUnits) => {
     try {
-        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${metricUnits ? `metric` : `imperial`}&appid=a0c5f9206a8c535897e2b0386b6a580d`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${metricUnits ? `metric` : `imperial`}&appid=a0c5f9206a8c535897e2b0386b6a580d`);
         return response;
     } catch (error) {
         console.log(error);
